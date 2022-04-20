@@ -1,0 +1,6 @@
+config:
+  digitalocean:spaces_access_id: MSNOENTYNU34WGETMAJX
+  digitalocean:spaces_secret_key:
+    secure: AAABAMap5vU4Fpi0jX1dq/o8N3TQvjTfLayfoSXRvCGuFnSYjTSphLoXC841jBSdOzDJxpDdu/g76zx79+q/e0qXWbu0IDTHh0pT
+  digitalocean:token:
+    secure: AAABABp9tZ/7iuY5VUoW2dY/cJY5vNJpVK2/QJLTHRxicPwrRUiSk8Jm6hk4SJHDRXN14sLUl8wTuHEV7BSWsIe00DvkF0mNA2ykaptBfe7L++MnxJSJT06ZXx1XR6Ga

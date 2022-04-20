@@ -1,0 +1,16 @@
+apiVersion: notification.toolkit.fluxcd.io/v1beta1
+kind: Alert
+metadata:
+  name: webhook-alert
+  namespace: flux-system
+spec:
+  providerRef:
+    name: webhook-notifier
+  eventSeverity: info
+  eventSources:
+    - kind: HelmRelease
+      name: sock-shop
+      namespace: flux-system
+    - kind: Kustomization
+      name: demo-kustomization
+      namespace: flux-system
