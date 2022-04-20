@@ -1,0 +1,9 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: kcert-repo
+spec:
+  interval: 1m
+  ref:
+    tag: v1.0.0
+  url: https://github.com/nabsul/kcert.git

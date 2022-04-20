@@ -1,0 +1,18 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: flux2
+spec:
+  releaseName: flux2
+  install:
+    createNamespace: true
+  targetNamespace: flux-system
+  chart:
+    spec:
+      chart: flux2
+      sourceRef:
+        kind: HelmRepository
+        name: fluxcd
+        namespace: flux-system
+      version: "0.16.0"
+  interval: 10m0s

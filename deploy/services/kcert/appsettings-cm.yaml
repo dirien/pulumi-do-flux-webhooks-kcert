@@ -1,0 +1,33 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: appsettings
+  namespace: kcert
+data:
+  appsettings.json: |
+    {
+      "KCert": {
+        "Namespace": "kcert",
+        "IngressName": "kcert",
+        "SecretName": "kcert",
+        "ServiceName": "kcert",
+        "ServicePort": 80,
+        "AcceptAllChallenges": false,
+        "WatchIngresses": true,
+        "ShowRenewButton": false
+      },
+      "Acme": {
+        "DirUrl": "https://acme-staging-v02.api.letsencrypt.org/directory",
+        "ValidationWaitTimeSeconds": 10,
+        "ValidationNumRetries": 5,
+        "RenewalCheckTimeHours": 6,
+        "RenewalThresholdDays": 30,
+        "AutoRenewal": true
+      },
+      "ChallengeIngress": {
+        "Annotations": {
+          "kubernetes.io/ingress.class": "contour"
+        },
+        "Labels": null
+      }
+    }

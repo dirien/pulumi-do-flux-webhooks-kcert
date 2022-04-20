@@ -1,0 +1,39 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: kcert
+spec:
+  prune: true
+  interval: 10m0s
+  targetNamespace: kcert
+  sourceRef:
+    kind: GitRepository
+    name: kcert-repo
+    namespace: kcert
+  patches:
+  - patch: |
+      - op: add
+        path: /spec/template/spec/volumes
+        value:
+          - name: appsettings
+            configMap:
+              name: appsettings
+      - op: add
+        path: /spec/template/spec/containers/0/volumeMounts
+        value:
+        - name: appsettings
+          mountPath: /app/appsettings.json
+          subPath: appsettings.json   
+      - op: replace 
+        path: /spec/template/spec/containers/0/env
+        value:
+        - name: ACME__DIRURL
+          value: https://acme-staging-v02.api.letsencrypt.org/directory
+        - name: ACME__TERMSACCEPTED
+          value: "true"
+        - name: ACME__EMAIL
+          value: info@ediri.de
+    target:
+      kind: Deployment
+      name: kcert
+      namespace: kcert
